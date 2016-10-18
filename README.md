@@ -9,7 +9,7 @@ for the next public release when that happens.
 
 Add this line to your application's Gemfile:
 
-    gem 'active_model_serializer-matchers', github: 'Zmokizmoghi/active_model_serializers-matchers', branch: 'master'
+    gem 'active_model_serializers-matchers', github: 'Zmokizmoghi/active_model_serializers-matchers', branch: 'master'
 
 And then execute:
 
