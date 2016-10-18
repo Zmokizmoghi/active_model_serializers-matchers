@@ -2,22 +2,18 @@
 
 RSpec Matchers for testing ActiveModel::Serializers
 
-This gem currently works with the **0.1.0** release. It will be updated
+This gem currently works with the **0.8.2** release. It will be updated
 for the next public release when that happens.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'active_model_serializer-matchers'
+    gem 'active_model_serializer-matchers', github: 'Zmokizmoghi/active_model_serializers-matchers', branch: 'master'
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install active_model_serializer-matchers
 
 ## Usage
 

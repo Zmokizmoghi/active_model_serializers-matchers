@@ -19,14 +19,15 @@ module ActiveModel
         end
 
         def failure_message_for_should
-          %Q{expected "#{actual._root}" to be "#{name}", but it wasn't}
+          %(expected "#{actual._root}" to be "#{name}", but it wasn't)
         end
 
         def failure_message_for_should_not
-          %Q{expected "#{actual._root}" to be "#{name}", but it was}
+          %(expected "#{actual._root}" to be "#{name}", but it was)
         end
 
         private
+
         def serializer
           if actual.is_a?(Class)
             actual
@@ -58,20 +59,25 @@ module ActiveModel
         end
 
         def failure_message_for_should
-          %Q{expected "#{actual._embed}" to be "#{name}", but it wasn't}
+          %(expected "#{actual._embed}" to be "#{name}", but it wasn't)
         end
 
         def failure_message_for_should_not
-          %Q{expected "#{actual._embed}" to be "#{name}", but it was}
+          %(expected "#{actual._embed}" to be "#{name}", but it was)
         end
 
         private
+
         def serializer
           if actual.is_a?(Class)
             actual
           else
             actual.class
           end
+        end
+
+        def name
+          expected
         end
       end
 
@@ -89,7 +95,7 @@ module ActiveModel
         def matches?(actual)
           @actual = actual
 
-          return false unless attributes.has_key?(name)
+          return false unless attributes.key?(name)
           return true unless expected_key
           attributes[name] == expected_key
         end
@@ -99,19 +105,20 @@ module ActiveModel
         end
 
         def failure_message_for_should
-          %Q{expected #{actual.inspect} to include "#{name}", but it did not}
+          %(expected #{actual.inspect} to include "#{name}", but it did not)
         end
 
         def failure_message_for_should_not
-          %Q{expected #{actual.inspect} to not include: "#{name}", but it did}
+          %(expected #{actual.inspect} to not include: "#{name}", but it did)
         end
-        
+
         def as(value)
           self.expected_key = value
           self
         end
 
         private
+
         def serializer
           if actual.is_a?(Class)
             actual
@@ -128,7 +135,6 @@ module ActiveModel
       def have_attribute(name)
         HaveAttribute.new name
       end
-      
 
       class AssociationMatcher
         attr_accessor :name, :actual, :expected_key
@@ -139,13 +145,13 @@ module ActiveModel
 
         def matches?(actual)
           @actual = actual
-          
-          matched_association = associations.detect do |key, assc|
+
+          matched_association = associations.detect do |key, _assc|
             key == name
           end
-          
+
           return false unless matched_association
-          
+
           if expected_key
             association_key = matched_association.last.options[:key]
             return false if association_key != expected_key
@@ -164,14 +170,15 @@ module ActiveModel
         end
 
         def failure_message_for_should
-          %Q{expected #{actual.inspect} to include a "#{name}" association, but it did not}
+          %(expected #{actual.inspect} to include a "#{name}" association, but it did not)
         end
 
         def failure_message_for_should_not
-          %Q{expected #{actual.inspect} to not include a "#{name}" association, but it did}
+          %(expected #{actual.inspect} to not include a "#{name}" association, but it did)
         end
 
         private
+
         def serializer
           if actual.is_a?(Class)
             actual
@@ -188,7 +195,7 @@ module ActiveModel
       def have_many(name)
         AssociationMatcher.new(name)
       end
-      alias :have_one :have_many
+      alias have_one have_many
     end
   end
 end

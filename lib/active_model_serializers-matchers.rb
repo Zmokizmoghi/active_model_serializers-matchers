@@ -3,8 +3,8 @@ require 'active_model_serializers'
 module ActiveModel::Serializers::Matchers
 end
 
-require "active_model_serializers/matchers/version"
-require "active_model_serializers/matchers"
+require 'active_model_serializers/matchers/version'
+require 'active_model_serializers/matchers'
 
 module SerializerExampleGroup
   extend ActiveSupport::Concern
@@ -20,7 +20,7 @@ end
 require 'rspec'
 
 RSpec.configure do |config|
-  config.include SerializerExampleGroup, :example_group => {
-    :file_path => /spec\/serializers/
+  config.include SerializerExampleGroup, example_group: {
+    file_path: /spec\/serializers/
   }
 end
